@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
+import Home from "../components/Home/index"
 
 function Layout() {
   return (
     <main>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
-        <NotFound />
+        <Home/>
       </div>
     </main>
   );
