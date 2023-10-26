@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react"
-import {Route, Switch, useParams} from "react-router-dom"
+import React, {useEffect, useState} from "react"
+import {Route, Switch, useParams, useHistory} from "react-router-dom"
 import {listDecks, deleteDeck, readDeck} from "../../utils/api/index"
 import ButtonLink from "../ButtonLink";
 import DeckCard from "../Decks/DeckCard";
@@ -11,6 +11,7 @@ import NotFound from "../../Layout/NotFound";
 export default function Home(){
 
   const [decks, setDecks] = useState([]);
+  const history = useHistory();
   const params = useParams();
   const updateDecks = async () => {
     const fetchResponse = await listDecks().then((response)=>{
@@ -22,12 +23,18 @@ export default function Home(){
   
   const removeDeck = async (deckId)=>{
     await deleteDeck(deckId);
-    await updateDecks();
+    history.go(0);
   }
    
   //load the decks once
-  useEffect(async ()=>{
-    await updateDecks();
+  useEffect(()=>{
+    const updateDecks = async () => {
+      const fetchResponse = await listDecks().catch((err)=>{
+        console.log(err);
+      });
+      setDecks(fetchResponse);
+    }
+    updateDecks();
   },[params])
   
   

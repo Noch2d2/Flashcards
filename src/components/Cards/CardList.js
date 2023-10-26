@@ -1,7 +1,7 @@
 import ButtonLink from "../ButtonLink";
 import {useHistory, useParams, useRouteMatch} from "react-router-dom";
 import {deleteCard, readDeck} from "../../utils/api";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 export default function CardList(){
     

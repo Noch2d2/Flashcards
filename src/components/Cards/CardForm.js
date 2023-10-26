@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {createCard, readCard, readDeck, updateCard} from "../../utils/api";
 import ButtonLink from "../ButtonLink";
@@ -59,7 +59,7 @@ export default function CardForm({editMode}){
     
     //TODO:Breadcrumbs
     return deck ? (
-        <>
+        <main>
             <h3><span>{deck.name}</span>:<span>Add Card</span></h3>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -94,6 +94,6 @@ export default function CardForm({editMode}){
                 <ButtonLink to={`/decks/${params.deckId}`} className="btn btn-secondary">Done</ButtonLink>
                 <input className="btn btn-primary" type="submit" value="Save"/>
             </form>
-        </>
+        </main>
     ):null
 }

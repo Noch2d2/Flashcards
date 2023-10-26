@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useState,useEffect} from "react";
+import React, {useState,useEffect} from "react";
 import {readDeck} from "../../utils/api";
 import CardStudy from "../Cards/CardStudy";
 import ButtonLink from "../ButtonLink";
@@ -29,7 +29,7 @@ export default function DeckStudy (){
     
     
     return deck.cards && deck.name ? (
-        <>
+        <main>
             <Breadcrumb data={breadcrumb}/>
             <h1>Study: {deck.name}</h1>
             {deck.cards.length <= 2 ?
@@ -39,6 +39,6 @@ export default function DeckStudy (){
                 <ButtonLink to={`/decks/${deck.id}/cards/new`} className="btn btn-primary">+ Add Cards</ButtonLink>
             </div>)
             : <CardStudy cards={deck.cards}/>}
-        </>
+        </main>
     ): null;
 }

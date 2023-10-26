@@ -1,5 +1,5 @@
 import ButtonLink from "../ButtonLink";
-import {useEffect, useState} from "react"
+import React, {useEffect, useState} from "react"
 import {createDeck, readDeck, updateDeck} from "../../utils/api";
 import {useHistory, useParams} from "react-router-dom";
 import Breadcrumb from "../Breadcrumb";
@@ -61,7 +61,7 @@ export default function DeckForm({editMode}){
     }
 
     return (
-    <>
+    <main>
     {deck.name || breadcrumb ? <Breadcrumb data={breadcrumb}/>: ""}
     <h1>{editMode ? "Edit" : "Create"} Deck</h1>
     <form id="theForm" onSubmit={handleSubmit}>
@@ -90,6 +90,6 @@ export default function DeckForm({editMode}){
         <ButtonLink to={editMode ? `/decks/${params.deckId}`: '/'} className="btn btn-secondary">Cancel</ButtonLink>
         <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
     </form>
-    </>
+    </main>
     );
 }

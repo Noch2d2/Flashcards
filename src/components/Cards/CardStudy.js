@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 
 export default function CardStudy({cards}){
@@ -26,7 +26,7 @@ export default function CardStudy({cards}){
     };
             
     return (
-        <>
+        <main>
             <div className="card">
                 <h4>Card {currentlyPresenting.cardNum} of {cards.length}</h4>
                 <p>{currentlyPresenting.showFront ? cards[currentlyPresenting.cardNum-1].front : cards[currentlyPresenting.cardNum-1].back}</p>
@@ -47,6 +47,6 @@ export default function CardStudy({cards}){
                 }
                     
             </div>
-        </>
+        </main>
     )
 }

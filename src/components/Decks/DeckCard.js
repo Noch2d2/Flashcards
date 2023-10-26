@@ -1,9 +1,10 @@
+import React from "react";
 import ButtonLink from "../ButtonLink";
 
 export default function DeckCard(props){
   const {id, cards, description, name} = props.details;
 
-  const handleDelete = async (id)=>{
+  const handleDelete = (id)=>{
     const response = window.confirm("Delete this deck?\n\nYou will not be able to recover it.");
     if (response){
       props.deleteFn(id);

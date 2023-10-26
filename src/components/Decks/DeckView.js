@@ -1,5 +1,5 @@
 import {deleteDeck, readDeck} from "../../utils/api";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useHistory, useParams, useRouteMatch} from "react-router-dom";
 import ButtonLink from "../ButtonLink";
 import CardList from "../Cards/CardList";
@@ -37,7 +37,7 @@ export default function DeckView() {
     }
 
     return deck && breadcrumb ? (
-        <>
+        <main>
         <Breadcrumb data={breadcrumb}/>
             <div className="container">
                 <h3>{deck.name}</h3>
@@ -57,6 +57,6 @@ export default function DeckView() {
                 <h2>Cards</h2>
                 <CardList/>
             </div>
-        </>
+        </main>
     ) : null;
 }
